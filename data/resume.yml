@@ -1,14 +1,7 @@
 ---
 title: Webologist and Software Craftsperson
-website:
-  brand: Resume of Tamara Temple
-  sections:
-    - title: Home
-      link: "#page-top"
-    - title: About
-      link: "#about"
 last_update:
-  Time-stamp: <2016-05-08 19:11:52 tamara>
+  Time-stamp: <2016-05-09 03:26:18 tamara>
 name:
   given: Tamara
   middle: Paula
@@ -30,10 +23,13 @@ contact_info:
   web_sites:
     - label: Github
       url: http://github.com/tamouse
+      icon: github
     - label: DevBlog
       url: http://swaac.tamouse.org/
+      icon: pencil-square-o
     - label: Twitter
       url: http://twitter.com/tamouse
+      icon: twitter
   social:
     twitter: tamouse
     github: tamouse
@@ -51,7 +47,7 @@ summary:
     features are delivered on time and within budget.'
   - 'Work with team members to provide a fun, healthy, productive, diverse, and cohesive
     team of managers, analysts, developers, quality assurance, and operations.'
-  - 'Experienced in:'
+  - '### Experienced in:'
   - '* architecting and developing web applications, software products, and utilities'
   - '* designing and developing static and dynamic websites.'
   - '* technical leadership, knowledge sharing, teaching, and coaching'
@@ -59,6 +55,7 @@ summary:
   - '* analyzing technical and business processes'
   - '* designing and assembling development-to-deployment processes'
   - '* creating sharable development environments'
+
 summary_links:
   - text: Software As A Craft
     link: http://swaac.tamouse.org/swaac-intro/

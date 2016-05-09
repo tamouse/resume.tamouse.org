@@ -1,0 +1,5 @@
+// about section
+%section.jumbotron{id: "about"}
+  - data.resume.summary.each do |par|
+    :markdown
+      #{par}

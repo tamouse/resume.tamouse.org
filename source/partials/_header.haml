@@ -1,0 +1,15 @@
+%header.navbar-wrapper
+  %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+    .container
+      .navbar-header.page-scroll
+        %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"}= data.website.website.title
+      #navbar.navbar-collapse.collapse
+        %ul.nav.navbar-nav.navbar-right
+          - data.website.sections.each do |label, sec|
+            %li
+              %a.page-scroll{href: sec.link}= sec.title

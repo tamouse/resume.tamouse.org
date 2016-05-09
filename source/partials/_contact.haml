@@ -1,0 +1,9 @@
+%section.jumbotron{id: "contact"}
+
+  .action-call.text-center
+    %a.btn.btn-primary{href: data.resume.contact_info.email.first.address} Hire Me!
+
+  .social-icons.text-center
+    - data.resume.contact_info.web_sites.each do |site|
+      %a{href: site.url, title: site.label, target: "_blank"}
+        %i{class: "fa fa-#{site.icon}"}

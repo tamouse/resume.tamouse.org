@@ -1,0 +1,3 @@
+// open graph data
+- %w[url type title description image].each do |key|
+  %meta{content: "#{data.website.website[key]}", property: "og:#{key}"}
