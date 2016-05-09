@@ -1,110 +1,95 @@
 ###
-# Compass
-###
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-###
 # Page options, layouts, aliases and proxies
 ###
 
 # Per-page layout changes:
 #
 # With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+page '/*.xml', layout: false
+page '/*.json', layout: false
+page '/*.txt', layout: false
 
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
-#  :which_fake_page => "Rendering a fake page with a local variable" }
+# With alternative layout
+# page "/path/to/file.html", layout: :otherlayout
+
+# Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
+# which_fake_page: "Rendering a fake page with a local variable" }
 
 ###
 # Helpers
 ###
 
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
+###
+# Environment List
+###
 
-# Reload the browser automatically whenever files change
-# activate :livereload
+# Server Environment
+configure :server do
 
-# Methods defined in the helpers block are available in templates
-helpers do
-  def full_name
-    %w[given middle family].map{|np| data.resume.name[np]}.join(" ")
-  end
-  def humanize(s)
-    s.gsub(/_+/,' ')
-  end
-  def titlecase(s)
-    s.split(/\W+/).map{|w| w.capitalize}.join(" ")
-  end
+  # Debug assets
+  set :debug_assets, true
+
 end
 
+# Development Environment
+configure :development do
 
-set :css_dir, 'stylesheets'
+  # Automatic image dimensions on image_tag helpers
+  activate :automatic_image_sizes
 
-set :js_dir, 'javascripts'
+  # Reload the browser automatically whenever files change
+  activate :livereload,  :no_swf => true
 
-set :images_dir, 'images'
+  # Assets Pipeline Sets
+  set :haml, {ugly: false, format: :html5}
+  set :css_dir, 'assets/stylesheets'
+  set :js_dir, 'assets/javascripts'
+  set :images_dir, 'assets/images'
+  set :fonts_dir, 'assets/fonts'
 
-# Build-specific configuration
+  # Pretty URLs
+  # activate :directory_indexes
+
+end
+
+# Build Environment
 configure :build do
-  # For example, change the Compass output style for deployment
-  # activate :minify_css
+
+  # Minify CSS on build
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
-  # Enable cache buster
-  # activate :asset_hash
+  # GZIP text files
+  # activate :gzip
 
   # Use relative URLs
   activate :relative_assets
 
-  # Or use a different image path
-  # set :http_prefix, "/Content/images/"
+  # Middleman Deploy (https://github.com/middleman-contrib/middleman-deploy/)
+  #activate :deploy do |deploy|
+  #  deploy.deploy_method = :git
+  #  Optional Settings
+  #  deploy.remote   = 'https://github.com/coskuntekin/baidu_weather_widget.git' # remote name or git url, default: origin
+  #  deploy.branch   = 'gh-pages' # default: gh-pages
+  #  deploy.strategy = :submodule # commit strategy: can be :force_push or :submodule, default: :force_push
+  #  deploy.commit_message = 'custom-message' # commit message (can be empty), default: Automated commit at `timestamp` by middleman-deploy `version`
+  #end
+
 end
 
-## Extensions
+# Production Environment
+configure :production do
 
-# Deploy
+  # Assets Pipeline Sets
+  set :css_dir, 'assets/stylesheets'
+  set :js_dir, 'assets/javascripts'
+  set :images_dir, 'assets/images'
+  set :fonts_dir, 'assets/fonts'
 
-activate :deploy do |deploy|
-  deploy.build_before = true    # always make sure we've built before we deploy
+  # Middleman Production dev server run code
+  # 'middleman server -e production'
 
-  deploy.method = :rsync
-  deploy.host   = 'tamouse.org'
-  deploy.path   = 'Sites/tamouse.org/resume'
-  deploy.clean  = true
 end
-
-
-
-# Create the PDF and RTF versions after_build
-
-class CreatePDFandRTF < Middleman::Extension
-
-  def initialize(app, options_hash={}, &block)
-    super
-    app.after_build do |builder|
-      Dir.chdir "build" do |builddir|
-        builder.run "pdflatex resume.tex"
-        builder.run "pandoc -s docx.html -o resume.rtf"
-      end
-    end
-  end
-end
-
-::Middleman::Extensions.register(:create_pdf_and_rtf, CreatePDFandRTF)
-activate :create_pdf_and_rtf

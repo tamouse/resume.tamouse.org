@@ -1,7 +1,14 @@
 ---
 title: Webologist and Software Craftsperson
+website:
+  brand: Resume of Tamara Temple
+  sections:
+    - title: Home
+      link: "#page-top"
+    - title: About
+      link: "#about"
 last_update:
-  Time-stamp: <2015-08-13 16:26:01 tamara>
+  Time-stamp: <2016-05-08 19:11:52 tamara>
 name:
   given: Tamara
   middle: Paula
