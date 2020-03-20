@@ -23,5 +23,6 @@
 
 // Place any jQuery/helper plugins in here.
 $(window).load(function(){
-	console.log('jQuery Version is: ' +$().jquery);
+  console.log('jQuery Version is: ' +$().jquery);
+  $('[data-toggle="tooltip"]').tooltip();
 });

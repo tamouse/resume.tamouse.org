@@ -12,7 +12,7 @@ website:
 sections:
   about:
     title: About
-    link: "#about"
+    link: "#page-top"
   projects:
     title: Projects
     link: "#projects"

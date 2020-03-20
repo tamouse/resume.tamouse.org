@@ -1,0 +1,48 @@
+.jumbotron
+  margin: 0
+  background: linear-gradient(transparent, $brand-pale, transparent)
+  padding-top: $navbar-height + 5px
+  padding-left: 20px
+  padding-right: 20px
+
+  p, li, blockquote, q
+    font-size: $jumbotron-font-size
+  & > h2
+    text-align: center
+
+  &#about
+    background: linear-gradient($brand-pale, transparent)
+
+  &#contact
+    background: linear-gradient(transparent, transparent, $brand-primary)
+
+  .action-call
+    a
+      padding: 20px
+      font-size: 20px
+      margin: 15px
+  .social-icons
+    a
+      font-size: 30px
+      text-decoration: none
+    &:hover
+      text-decoration: none
+
+@media screen and (min-width: $screen-sm-min)
+  .jumbotron
+    padding: 200px
+
+    .action-call
+      a
+        margin: 20px
+        padding: 40px
+        font-size: 40px
+
+    .social-icons
+      padding: 30px
+      font-size: 30px
+      a
+        padding: 0 10px
+        text-decoration: none
+      &:hover
+        text-decoration: none

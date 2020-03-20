@@ -1,0 +1,23 @@
+
+.navbar-default
+  background: linear-gradient($brand-primary, transparent)
+
+  .navbar-brand
+    color: white
+    text-shadow: 1px 1px $gray
+
+  .navbar-nav
+    & > li
+      box-sizing: border-box
+      border-bottom: 3px solid transparent
+
+      &:hover
+        border-bottom-color: darken($brand-primary, 50%)
+        transition: all 0.5s
+
+      & > a
+        color: white
+        text-shadow: 1px 1px $gray
+
+.navbar-fixed-top
+  border-width: 0
